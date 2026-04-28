@@ -10,11 +10,14 @@ export function UpdatePrompt() {
 
   useEffect(() => {
     const fn = registerSW({
-      onNeedRefresh() {
-        setNeedRefresh(true)
-      },
+      onNeedRefresh() { setNeedRefresh(true) },
+      // poll every 60 s so all open tabs/devices pick up updates quickly
+      immediate: true,
     })
     setUpdateSW(() => fn)
+
+    const id = setInterval(() => fn(), 60_000)
+    return () => clearInterval(id)
   }, [])
 
   if (!needRefresh) return null

@@ -6,6 +6,13 @@ export interface ChangelogEntry {
 
 export const CHANGELOG: ChangelogEntry[] = [
   {
+    version: '0.1.1',
+    date: '2026-04-28',
+    changes: [
+      { summary: 'PWA polls every 60 s — updates appear on all devices without manual refresh', files: ['src/components/ui/UpdatePrompt.tsx'] },
+    ],
+  },
+  {
     version: '0.1.0',
     date: '2026-04-28',
     changes: [
